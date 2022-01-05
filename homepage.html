@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Phone Store</title>
+    <link rel="icon" href="Images/logo.jpg" type="icon">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+</head>
+<body>
+     <!-- HEADER -->
+     <div id="1"></div>
+     <script>
+         load("header.html");
+         function load(url)
+         {
+             req = new XMLHttpRequest();
+             req.open("GET", url, false);
+             req.send(null);
+             document.getElementById(1).innerHTML = req.responseText;
+         }
+     </script>
+
+     <section class="section">
+         <div class="slider">
+             <div class="slide">
+                 <input type="radio" name="radio-btn" id="radio1">
+                 <input type="radio" name="radio-btn" id="radio2">
+                 <input type="radio" name="radio-btn" id="radio3">
+                 <input type="radio" name="radio-btn" id="radio4">
+                 <input type="radio" name="radio-btn" id="radio5">
+
+                 <div class="st first">
+                     <img src="Images/slider1.jpg" alt="">
+                 </div>
+                 <div class="st">
+                    <img src="Images/opposlider.jpg" alt="">
+                </div>
+                <div class="st">
+                    <img src="Images/samsungslider.jpg" alt="">
+                </div>
+                <div class="st">
+                    <img src="Images/huaweislider.jpg" alt="">
+                </div>
+                <div class="st">
+                    <img src="Images/redmislider.jpg" alt="">
+                </div>
+
+                <div class="nav-auto">
+                    <div class="a-b1"></div>
+                    <div class="a-b2"></div>
+                    <div class="a-b3"></div>
+                    <div class="a-b4"></div>
+                    <div class="a-b5"></div>
+                </div>
+             </div>
+
+             <div class="nav-m">
+                 <label for="radio1" class="m-btn"></label>
+                 <label for="radio2" class="m-btn"></label>
+                 <label for="radio3" class="m-btn"></label>
+                 <label for="radio4" class="m-btn"></label>
+                 <label for="radio5" class="m-btn"></label>
+             </div>
+         </div>
+     </section>
+
+     <h1 class="center">Product Categories</h1>
+    <section class="container1">
+        <div class="card">
+            <div class="card-image brand-1"></div>
+            <h2>SAMSUNG</h2>
+            <a href="">Explore</a>
+        </div>
+        <div class="card">
+            <div class="card-image brand-2"></div>
+            <h2>APPLE</h2>
+            <a href="">Explore</a>
+        </div>
+        <div class="card">
+            <div class="card-image brand-3"></div>
+            <h2>HUAWEI</h2>
+            <a href="">Explore</a>
+        </div>
+</section>   
+    <section class="container2">
+        <div class="card">
+            <div class="card-image brand-4"></div>
+            <h2>OPPO</h2>
+            <a href="/Review/Nb.html">Explore</a>
+        </div>
+        <div class="card">
+            <div class="card-image brand-5"></div>
+            <h2>XIAOMI</h2>
+            <a href="">Explore</a>
+        </div><br><br><br><br><br><br>
+</section>
+
+<h1 class="center">Hot Items</h1>
+<a href="product.html" class="aa">View all products <i class="fa fa-angle-right"></i></a>
+<section class="container3">
+    <div class="cardhot">
+        <div class="cardhot-image hot-1"></div>
+        <h2>Iphone 13 Pro Max</h2>
+        <h3>RM 5,299.00</h3><br>
+                <ul class="stars">
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+                <span class="review">Reviews (24)</span>
+    </div>
+    <div class="cardhot">
+        <div class="cardhot-image hot-2"></div>
+        <h2>Xiaomi Black Shark 4 Pro</h2>
+        <h3>RM 2,637.07</h3><br>
+                <ul class="stars">
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+                <span class="review">Reviews (15)</span>
+    </div>
+    <div class="cardhot">
+        <div class="cardhot-image hot-3"></div>
+        <h2>Oppo Find X3 Pro</h2>
+        <h3>RM 4,299.00</h3><br>
+                <ul class="stars">
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+                <span class="review">Reviews (12)</span>
+    </div><br><br>
+</section>
+
+
+     <script type="text/javascript">
+         var counter = 1;
+         setInterval(function(){
+             document.getElementById('radio' + counter).checked = true;
+             counter++;
+             if(counter > 5){
+                counter = 1;
+             }
+         },5000)
+     </script>
+
+     <!-- FOOTER -->
+    <div id="4"></div>
+    <script>
+        load("footer.html");
+        function load(url)
+        {
+            req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            document.getElementById(4).innerHTML = req.responseText;
+        }
+    </script>
+</body>
+</html>

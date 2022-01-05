@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Phone Store</title>
+    <link rel="icon" href="Images/logo.jpg" type="icon">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div id="1"></div>
+    <script>
+        load("header.html");
+        function load(url)
+        {
+            req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            document.getElementById(1).innerHTML = req.responseText;
+        }
+    </script>
+
+    <section class="about">
+        <div class="main">
+            <img src="/Images/about.jpg">
+            <div class="about-text">
+                <h1>About Us</h1>
+                <h5>E-Phone Store</h5>
+                <p>E-Phone Store gives you a chance to quickly and easily find the phone you want. </p>
+                <p>E-Phone Store website was launched in 2021, a group of university friends decided to go into business together. 
+                    We started selling phones in shops, but our combined ambition, drive and abilities soon made us look for new challenges and new markets. </p>
+            </div>
+        </div>
+    </section>
+
+    <h2 style="text-align: center;">Store Gallery</h2>
+    <div class="image-grid">
+        <img class="image-grid-col-2 image-grid-row-2" src="/Images/gallery4.jpg" alt="gallery">
+        <img src="/Images/gallery1.jpg" alt="gallery">
+        <img src="/Images/gallery2.jpg" alt="gallery">
+        <img src="/Images/gallery3.jpg" alt="gallery">
+        <img src="/Images/gallery5.jpg" alt="gallery">
+      </div><br>
+           <!-- FOOTER -->
+    <div id="4"></div>
+    <script>
+        load("footer.html");
+        function load(url)
+        {
+            req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            document.getElementById(4).innerHTML = req.responseText;
+        }
+    </script>
+</body>
+</html>
