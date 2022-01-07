@@ -57,11 +57,11 @@ p1{
 <body>
 <div class="loginbox">
     <h1>Login</h1>
-    <form action="../index.php" method="POST"
-    <p>Email</p>
-    <input type="text" name="user" placeholder="Enter Username">
-    <p>Password</p>
-    <input type="password" name="pass" placeholder="Enter your password"> <br>
+    <form action="logincode.php" method="POST">
+    <p style="width: 10%">Email<font color="red">*</font></p>
+    <input type="email" style="height : 10%"name="email" placeholder="Enter Your Email" required="required" >
+    <p style="width: 10%">Password<font color="red">*</font></p>
+    <input type="password" name="pass" placeholder="Enter your password" required="required"> <br>
     <input type="submit" id="student" name="submit" value="Login">
     </form>
     <h5><a href="signup.php">Click here to register</h5>
