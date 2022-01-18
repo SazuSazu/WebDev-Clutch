@@ -48,7 +48,7 @@ include('dbconnection.php');
                   
                     $createproduct = ++$product;
             }
-                $createproduct = $createproduct +1 ;
+                $createproduct;
             } ?>
 
 
@@ -99,22 +99,44 @@ include('dbconnection.php');
             <a href="#">See All</a>
           </div>
         </div>
-
-        <div class="top-sales box">
+            
+    <div class="top-sales box">
+      
         <div class="title">Popular</div>
-          <div class="title">Product</div>
-          <ul class="top-sales-details">
-            <li>
-            <a href="#">
-              <span class="product"><i class='bx bx-mobile' ></i>Vuitton Sunglasses</span>
-            </a>
+        <div class="title">Product</div>
+        
+        <ul class="top-sales-details">
+        <?php
+        global $conn;
+        $sql = "SELECT name, quantity from products ORDER BY quantity LIMIT 3";
+        $result = $conn->query($sql);
+        $num = 0;
+
+        if ($result->num_rows >0){
+            while ($row = $result->fetch_assoc()) {
+                $num++;             
+        ?> 
+        <li>
+        <tr>
+           <td><span class="product"><i class='bx bx-mobile'></i><?php echo $row["name"] ?></span></td>    
+        
+           <?php
+            }
+            $create = $num+1;
+            } else {
+            echo "0 results";
+            }
+            $conn->close();
+          ?>
           </li>
-          </ul>
-          <div class="button">
+        </tr>
+        <div class="button">
             <a href="manageproduct.php">See All</a>
           </div>
         </div>
       </div>
+      
+     
     </div>
   </section>
 
@@ -136,9 +158,3 @@ sidebarBtn.onclick = function() {
 
 </body>
 </html>
-
-<?php
-            
-            
-           
-?>

@@ -222,6 +222,7 @@ table.table .avatar {
 	font-weight: normal;
 }	
 </style>
+
 <script>
 $(document).ready(function(){
 	// Activate tooltip
@@ -246,6 +247,7 @@ $(document).ready(function(){
 		}
 	});
 });
+
 </script>
 <div class="home-content">
 <div class="container-xl">
@@ -318,7 +320,7 @@ $(document).ready(function(){
 				date_default_timezone_set("Asia/Kuala_Lumpur");					
                 if (isset($_POST['add'])) {
                     $name = $_POST['name'];
-                    $desc = $_POST['desc'];
+                    $descr = $_POST['desc'];
                     $price = $_POST['price'];
                     $rrp = $_POST['rrp'];
                     $quantity = $_POST['quantity'];
@@ -331,11 +333,13 @@ $(document).ready(function(){
                     if ($conn->query($sql) === true) {
                         // Success
                         echo "Success";
+						
                     } else {
                         // Failed
                         echo "Error: " . $sql . " | " . $conn->error;
                         die();
                     }
+					header("location:admin.php");
                 }
         ?>
 			<form method="POST"  enctype="multipart/form-date" accept-charset="utf-8">
@@ -370,12 +374,12 @@ $(document).ready(function(){
 					</div>
 					<div class="form-group">
 						<label>QR</label>
-						<input type="text" class="form-control"  name="qr" required>
+						<input type="text" class="form-control" id="qr" name="qr" required>
 					</div>	
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-success"  name="add">
+					<input type="submit" class="btn btn-success" onclick="generateQRCode()"  name="add">
 				</div>
 			</form>
 		</div>
@@ -512,10 +516,7 @@ $(document).ready(function() {
 });
 </script>
 
-
-
 <script>
-	
 
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -526,7 +527,6 @@ sidebarBtn.onclick = function() {
 }else
   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 }
-
 
 </script>
 
