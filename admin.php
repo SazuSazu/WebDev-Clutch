@@ -51,7 +51,6 @@ include('dbconnection.php');
                 $createproduct;
             } ?>
 
-
             <div class="number"><?php echo $createproduct;?> </div>
           </div>
           <i class='bx bxs-package cart two' ></i>
@@ -59,7 +58,24 @@ include('dbconnection.php');
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Total Order</div>
-            <div class="number">20</div>
+            <?php 
+            $sqlproduct = "SELECT * FROM payment";
+            $resultproduct = $conn->query($sqlproduct);
+            $order = 0;
+            $sales = 0;
+
+            if ($resultproduct->num_rows >0 ){
+                while ($row = $resultproduct->fetch_assoc()) {
+                    $createorder = ++$order;
+                    $sales = $sales+$row["price"];
+            }
+                $createorder;
+                $price;
+            } 
+           
+            ?>
+
+            <div class="number"><?php echo $createorder;?> </div>
           </div>
           <i class='bx bx-cart cart three' ></i>
         </div>
@@ -67,77 +83,74 @@ include('dbconnection.php');
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Total Sales</div>
-            <div class="number">RM 250</div>
+            <div class="number">RM<?php echo $sales;?></div>
           </div>
           <i class='bx bx-money cart four' ></i>
         </div>
       </div>
-
-
+      
       <div class="sales-boxes">
         <div class="recent-sales box">
         <span class="title">Recent Order</span>
           <div class="sales-details">
             <ul class="details">
-              <li class="topic">ID</li>
-              <li><a href="#">02 Jan 2021</a></li>
+              <li class="topic">Date</li>
+              <li><a href="#"></a></li>
             </ul>
             <ul class="details">
             <li class="topic">Name</li>
-            <li><a href="#">Alex Doe</a></li>
-          </ul>
-          <ul class="details">
-            <li class="topic">Quantity</li>
-            <li><a href="#">23</a></li>
+            <li><a href="#"></a></li>
           </ul>
           <ul class="details">
             <li class="topic">Total</li>
-            <li><a href="#">$204.98</a></li>
+            <li><a href="#"></a></li>
           </ul>
-          </div>
-          <div class="button">
-            <a href="#">See All</a>
           </div>
         </div>
             
-    <div class="top-sales box">
-      
-        <div class="title">Popular</div>
-        <div class="title">Product</div>
-        
-        <ul class="top-sales-details">
-        <?php
-        global $conn;
-        $sql = "SELECT name, quantity from products ORDER BY quantity LIMIT 3";
-        $result = $conn->query($sql);
-        $num = 0;
 
-        if ($result->num_rows >0){
-            while ($row = $result->fetch_assoc()) {
-                $num++;             
-        ?> 
-        <li>
-        <tr>
-           <td><span class="product"><i class='bx bx-mobile'></i><?php echo $row["name"] ?></span></td>    
+
         
-           <?php
-            }
-            $create = $num+1;
-            } else {
-            echo "0 results";
-            }
-            $conn->close();
-          ?>
-          </li>
-        </tr>
-        <div class="button">
-            <a href="manageproduct.php">See All</a>
-          </div>
+        <div class="top-sales box">
+      
+      <div class="title">Recent</div>
+      <div class="title">Product</div>
+      
+      <ul class="top-sales-details">
+
+
+      <?php
+      global $conn;
+      $sql = "SELECT name, date from products ORDER BY date LIMIT 3";
+      $result = $conn->query($sql);
+      $num = 0;
+
+      if ($result->num_rows >0){
+          while ($row = $result->fetch_assoc()) {
+              $num++;             
+      ?> 
+      <li>
+      <tr>
+         <td><span class="product"><i class='bx bx-mobile'></i><?php echo $row["name"] ?></span></td>    
+      
+         <?php
+          }
+          $create = $num+1;
+          } else {
+          echo "0 results";
+          }
+          $conn->close();
+        ?>
+        </li>
+      </tr>
+      <div class="button">
+          <a href="manageproduct.php">See All</a>
         </div>
       </div>
-      
-     
     </div>
+    
+   
+  </div>
   </section>
 
 
