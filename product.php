@@ -8,13 +8,21 @@ if (isset($_GET['id'])) {
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
     // Check if the product exists (array is not empty)
     if (!$product) {
-        // Simple error to display if the id for the product doesn't exists (array is empty)
         exit('Product does not exist!');
     }
 } else {
-    // Simple error to display if the id wasn't specified
     exit('Product does not exist!');
 }
+
+if(isset($_POST['cart'])){
+    $id = $_POST['id'];
+    $img = $_POST['img'];
+    $price = $_POST['price'];
+    $quantity = $_POST['quantity'];
+    $stmt = $pdo->prepare('INSERT INTO cart SELECT id,img,price,quantity FROM products WHERE id = ?');
+    $stmt->execute([$_GET['id']]);
+}
+
 ?>
 
 <?=template_header('Product')?>
@@ -34,7 +42,7 @@ if (isset($_GET['id'])) {
         <form action="index.php?page=cart" method="post">
             <input type="number" name="quantity" value="1" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
             <input type="hidden" name="product_id" value="<?=$product['id']?>">
-            <input type="submit" value="Add To Cart">
+            <input type="submit" name="cart" value="Add To Cart">
         </form>
         <div class="description">
             <?=$product['desc']?>
